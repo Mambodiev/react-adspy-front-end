@@ -52,6 +52,7 @@ const Posts = (props) => {
 						<Table stickyHeader aria-label="sticky table">
 							<TableHead>
 								<TableRow>
+									<TableCell>Image</TableCell>
 									<TableCell>Id</TableCell>
 									<TableCell align="left">Category</TableCell>
 									<TableCell align="left">Title</TableCell>
@@ -61,8 +62,15 @@ const Posts = (props) => {
 							<TableBody>
 								{posts.map((post) => {
 									return (
-										<TableRow>
+										<TableRow key={post.id}>
 											<TableCell component="th" scope="row">
+												<img
+												src={post.image}
+												width={60}
+												alt='Player'
+												/>												
+											</TableCell>
+											<TableCell>
 												{post.id}
 											</TableCell>
 											<TableCell align="left">{post.category}</TableCell>

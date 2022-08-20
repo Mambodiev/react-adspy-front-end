@@ -41,12 +41,12 @@ const Posts = (props) => {
 	if (!posts || posts.length === 0) return <p>Can not find any posts, sorry</p>;
 	return (
 		<React.Fragment>
-			<Container maxWidth="md" component="main">
-				<Grid container spacing={5} alignItems="flex-end">
+			<Container maxWidth="lg" component="main">
+				<Grid container spacing={3}>
 					{posts.map((post) => {
 						return (
 							// Enterprise card is full width at sm breakpoint
-							<Grid item key={post.id} xs={12} md={4}>
+							<Grid item key={post.id} xs={12} sm={6} md={4} >
 								<Card className={classes.card}>
 									<Link
 										color="textPrimary"
@@ -84,3 +84,43 @@ const Posts = (props) => {
 	);
 };
 export default Posts;
+
+
+// import React from 'react';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Paper from '@material-ui/core/Paper';
+// import Grid from '@material-ui/core/Grid';
+
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   paper: {
+//     padding: theme.spacing(2),
+//     textAlign: 'center',
+//     color: theme.palette.text.secondary,
+//   },
+// }));
+
+// export default function CenteredGrid() {
+//   const classes = useStyles();
+
+//   return (
+//     <div className={classes.root}>
+//       <Grid container spacing={3}>
+//         <Grid item xs={12} sm={6} md={4} lg={3}>
+//           <Paper className={classes.paper}>xs=3</Paper>
+//         </Grid>
+//         <Grid item xs={12} sm={6} md={4} lg={3}>
+//           <Paper className={classes.paper}>xs=3</Paper>
+//         </Grid>
+//         <Grid item xs={12} sm={6} md={4} lg={3}>
+//           <Paper className={classes.paper}>xs=3</Paper>
+//         </Grid>
+//         <Grid item xs={12} sm={6} md={4} lg={3}>
+//           <Paper className={classes.paper}>xs=3</Paper>
+//         </Grid>
+//       </Grid>
+//     </div>
+//   );
+// }
