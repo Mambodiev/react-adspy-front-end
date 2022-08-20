@@ -49,7 +49,7 @@ export default function Create() {
 				'content': res.data.content,
 			});
 			console.log(res.data);
-		});
+		}); // eslint-disable-next-line
 	}, [updateFormData]);
 
 	const handleChange = (e) => {

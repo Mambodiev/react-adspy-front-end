@@ -18,22 +18,20 @@ import Delete from './components/admin/delete';
 
 const routing = (
 	<Router>
-		<React.StrictMode>
-			<Header />
-			<Switch>
-				<Route exact path="/" component={App} />
-				<Route exact path="/admin" component={Admin} />
-				<Route exact path="/admin/create" component={Create} />
-				<Route exact path="/admin/edit/:id" component={Edit} />
-				<Route exact path="/admin/delete/:id" component={Delete} />
-				<Route path="/register" component={Register} />
-				<Route path="/login" component={Login} />
-				<Route path="/logout" component={Logout} />
-				<Route path="/post/:slug" component={Single} />
-				<Route path="/search" component={Search} />
-			</Switch>
-			<Footer />
-		</React.StrictMode>
+		<Header />
+		<Switch>
+			<Route exact path="/" component={App} />
+			<Route exact path="/admin" component={Admin} />
+			<Route exact path="/admin/create" component={Create} />
+			<Route exact path="/admin/edit/:id" component={Edit} />
+			<Route exact path="/admin/delete/:id" component={Delete} />
+			<Route path="/register" component={Register} />
+			<Route path="/login" component={Login} />
+			<Route path="/logout" component={Logout} />
+			<Route path="/post/:slug" component={Single} />
+			<Route path="/search" component={Search} />
+		</Switch>
+		<Footer />
 	</Router>
 );
 
