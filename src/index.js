@@ -9,8 +9,8 @@ import Footer from './components/footer';
 import Register from './components/auth/register';
 import Login from './components/auth/login';
 import Logout from './components/auth/logout';
-import Single from './components/posts/single';
-import Search from './components/posts/search';
+import Single from './components/products/single';
+import Search from './components/products/search';
 import Admin from './Admin';
 import Create from './components/admin/create';
 import Edit from './components/admin/edit';
@@ -28,7 +28,7 @@ const routing = (
 			<Route path="/register" component={Register} />
 			<Route path="/login" component={Login} />
 			<Route path="/logout" component={Logout} />
-			<Route path="/post/:slug" component={Single} />
+			<Route path="/product/:slug" component={Single} />
 			<Route path="/search" component={Search} />
 		</Switch>
 		<Footer />

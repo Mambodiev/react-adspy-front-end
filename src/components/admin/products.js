@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
 				? theme.palette.grey[200]
 				: theme.palette.grey[700],
 	},
-	postTitle: {
+	productTitle: {
 		fontSize: '16px',
 		textAlign: 'left',
 	},
-	postText: {
+	productText: {
 		display: 'flex',
 		justifyContent: 'left',
 		alignItems: 'baseline',
@@ -40,10 +40,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Posts = (props) => {
-	const { posts } = props;
+const Products = (props) => {
+	const { products } = props;
 	const classes = useStyles();
-	if (!posts || posts.length === 0) return <p>Can not find any posts, sorry</p>;
+	if (!products || products.length === 0) return <p>Can not find any products, sorry</p>;
 	return (
 		<React.Fragment>
 			<Container maxWidth="md" component="main">
@@ -60,42 +60,42 @@ const Posts = (props) => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{posts.map((post) => {
+								{products.map((product) => {
 									return (
-										<TableRow key={post.id}>
+										<TableRow key={product.id}>
 											<TableCell component="th" scope="row">
 												<img
-												src={post.image}
+												src={product.image}
 												width={60}
 												alt='Player'
 												/>												
 											</TableCell>
 											<TableCell>
-												{post.id}
+												{product.id}
 											</TableCell>
-											<TableCell align="left">{post.category}</TableCell>
+											<TableCell align="left">{product.category}</TableCell>
 
 											<TableCell align="left">
 												<Link
 													color="textPrimary"
-													href={'/post/' + post.slug}
+													href={'/product/' + product.slug}
 													className={classes.link}
 												>
-													{post.title}
+													{product.title}
 												</Link>
 											</TableCell>
 
 											<TableCell align="left">
 												<Link
 													color="textPrimary"
-													href={'/admin/edit/' + post.id}
+													href={'/admin/edit/' + product.id}
 													className={classes.link}
 												>
 													<EditIcon></EditIcon>
 												</Link>
 												<Link
 													color="textPrimary"
-													href={'/admin/delete/' + post.id}
+													href={'/admin/delete/' + product.id}
 													className={classes.link}
 												>
 													<DeleteForeverIcon></DeleteForeverIcon>
@@ -111,7 +111,7 @@ const Posts = (props) => {
 											variant="contained"
 											color="primary"
 										>
-											New Post
+											New Product
 										</Button>
 									</TableCell>
 								</TableRow>
@@ -123,4 +123,4 @@ const Posts = (props) => {
 		</React.Fragment>
 	);
 };
-export default Posts;
+export default Products;

@@ -40,7 +40,7 @@ export default function Create() {
 	const [formData, updateFormData] = useState(initialFormData);
 
 	useEffect(() => {
-		axiosInstance.get('admin/edit/postdetail/' + id).then((res) => {
+		axiosInstance.get('admin/edit/productdetail/' + id).then((res) => {
 			updateFormData({
 				...formData,
 				'title': res.data.title,
@@ -84,7 +84,7 @@ export default function Create() {
 			<CssBaseline />
 			<div className={classes.paper}>
 				<Typography component="h1" variant="h5">
-					Edit Post
+					Edit Product
 				</Typography>
 				<form className={classes.form} noValidate>
 					<Grid container spacing={2}>
@@ -94,7 +94,7 @@ export default function Create() {
 								required
 								fullWidth
 								id="title"
-								label="Post Title"
+								label="Product Title"
 								name="title"
 								autoComplete="title"
 								value={formData.title}
@@ -107,7 +107,7 @@ export default function Create() {
 								required
 								fullWidth
 								id="excerpt"
-								label="Post Excerpt"
+								label="Product Excerpt"
 								name="excerpt"
 								autoComplete="excerpt"
 								value={formData.excerpt}
@@ -153,7 +153,7 @@ export default function Create() {
 						className={classes.submit}
 						onClick={handleSubmit}
 					>
-						Update Post
+						Update Product
 					</Button>
 				</form>
 			</div>

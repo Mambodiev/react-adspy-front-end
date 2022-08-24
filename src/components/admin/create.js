@@ -64,25 +64,25 @@ export default function Create() {
 		content: '',
 	});
 
-	const [postData, updateFormData] = useState(initialFormData);
-	const [postimage, setPostImage] = useState(null);
+	const [productData, updateFormData] = useState(initialFormData);
+	const [productimage, setProductImage] = useState(null);
 
 	const handleChange = (e) => {
 		if ([e.target.name] === 'image') {
-			setPostImage({
+			setProductImage({
 				image: e.target.files,
 			});
 			console.log(e.target.files);
 		}
 		if ([e.target.name] === 'title') {
 			updateFormData({
-				...postData,
+				...productData,
 				[e.target.name]: e.target.value.trim(),
 				'slug': slugify(e.target.value.trim()),
 			});
 		} else {
 			updateFormData({
-				...postData,
+				...productData,
 				[e.target.name]: e.target.value.trim(),
 			});
 		}
@@ -91,13 +91,13 @@ export default function Create() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let formData = new FormData();
-		formData.append('title', postData.title);
-		formData.append('slug', postData.slug);
+		formData.append('title', productData.title);
+		formData.append('slug', productData.slug);
 		formData.append('author', 1);
-		formData.append('excerpt', postData.excerpt);
-		formData.append('content', postData.content);
-		formData.append('image', postimage.image[0]);
-		axiosInstance.post(`admin/create/`, formData);
+		formData.append('excerpt', productData.excerpt);
+		formData.append('content', productData.content);
+		formData.append('image', productimage.image[0]);
+		axiosInstance.product(`admin/create/`, formData);
 		history.push({
 			pathname: '/admin/',
 		});
@@ -107,14 +107,14 @@ export default function Create() {
 	// const config = { headers: { 'Content-Type': 'multipart/form-data' } };
 	// const URL = 'http://127.0.0.1:8000/api/admin/creats/';
 	// let formData = new FormData();
-	// formData.append('title', postData.title);
-	// formData.append('slug', postData.slug);
+	// formData.append('title', productData.title);
+	// formData.append('slug', productData.slug);
 	// formData.append('author', 1);
-	// formData.append('excerpt', postData.excerpt);
-	// formData.append('content', postData.content);
-	// formData.append('image', postimage.image[0]);
+	// formData.append('excerpt', productData.excerpt);
+	// formData.append('content', productData.content);
+	// formData.append('image', productimage.image[0]);
 	// axios
-	// 	.post(URL, formData, config)
+	// 	.product(URL, formData, config)
 	// 	.then((res) => {
 	// 		console.log(res.data);
 	// 	})
@@ -128,7 +128,7 @@ export default function Create() {
 			<div className={classes.paper}>
 				<Avatar className={classes.avatar}></Avatar>
 				<Typography component="h1" variant="h5">
-					Create New Post
+					Create New Product
 				</Typography>
 				<form className={classes.form} noValidate>
 					<Grid container spacing={2}>
@@ -138,7 +138,7 @@ export default function Create() {
 								required
 								fullWidth
 								id="title"
-								label="Post Title"
+								label="Product Title"
 								name="title"
 								autoComplete="title"
 								onChange={handleChange}
@@ -150,7 +150,7 @@ export default function Create() {
 								required
 								fullWidth
 								id="excerpt"
-								label="Post Excerpt"
+								label="Product Excerpt"
 								name="excerpt"
 								autoComplete="excerpt"
 								onChange={handleChange}
@@ -167,7 +167,7 @@ export default function Create() {
 								label="slug"
 								name="slug"
 								autoComplete="slug"
-								value={postData.slug}
+								value={productData.slug}
 								onChange={handleChange}
 							/>
 						</Grid>
@@ -188,7 +188,7 @@ export default function Create() {
 						<input
 							accept="image/*"
 							className={classes.input}
-							id="post-image"
+							id="product-image"
 							onChange={handleChange}
 							name="image"
 							type="file"
@@ -202,7 +202,7 @@ export default function Create() {
 						className={classes.submit}
 						onClick={handleSubmit}
 					>
-						Create Post
+						Create Product
 					</Button>
 				</form>
 			</div>

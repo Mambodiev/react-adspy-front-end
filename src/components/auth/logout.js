@@ -7,7 +7,7 @@ export default function SignUp() {
 
 	useEffect(() => {
 		// eslint-disable-next-line no-unused-vars
-		const response = axiosInstance.post('user/logout/blacklist/', {
+		const response = axiosInstance.product('user/logout/blacklist/', {
 			refresh_token: localStorage.getItem('refresh_token'),
 		});
 		localStorage.removeItem('access_token');

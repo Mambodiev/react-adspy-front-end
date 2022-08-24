@@ -16,18 +16,18 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Post() {
+export default function Product() {
 	const { slug } = useParams();
 	const classes = useStyles();
 
 	const [data, setData] = useState({
-		posts: [],
+		products: [],
 	});
 
 	useEffect(() => {
-		axiosInstance.get('post/' + slug).then((res) => {
+		axiosInstance.get('product/' + slug).then((res) => {
 			setData({
-				posts: res.data,
+				products: res.data,
 			});
 			console.log(res.data);
 		});
@@ -47,7 +47,7 @@ export default function Post() {
 						color="textPrimary"
 						gutterBottom
 					>
-						{data.posts.title}{' '}
+						{data.products.title}{' '}
 					</Typography>{' '}
 					<Typography
 						variant="h5"
@@ -55,7 +55,7 @@ export default function Post() {
 						color="textSecondary"
 						paragraph
 					>
-						{data.posts.excerpt}{' '}
+						{data.products.excerpt}{' '}
 					</Typography>{' '}
 				</Container>{' '}
 			</div>{' '}

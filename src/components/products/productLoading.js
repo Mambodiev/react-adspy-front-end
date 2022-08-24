@@ -1,7 +1,7 @@
 import React from 'react';
 
-function PostLoading(Component) {
-	return function PostLoadingComponent({ isLoading, ...props }) {
+function ProductLoading(Component) {
+	return function ProductLoadingComponent({ isLoading, ...props }) {
 		if (!isLoading) return <Component {...props} />;
 		return (
 			<p style={{ fontSize: '25px' }}>
@@ -10,4 +10,4 @@ function PostLoading(Component) {
 		);
 	};
 }
-export default PostLoading;
+export default ProductLoading;

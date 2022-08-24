@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Posts from './components/admin/posts';
-import PostLoadingComponent from './components/posts/postLoading';
+import Products from './components/admin/products';
+import ProductLoadingComponent from './components/products/productLoading';
 import axiosInstance from './axios';
 
 function Admin() {
-	const PostLoading = PostLoadingComponent(Posts);
+	const ProductLoading = ProductLoadingComponent(Products);
 	const [appState, setAppState] = useState({
 		loading: true,
-		posts: null,
+		products: null,
 	});
 
 	useEffect(() => {
 		axiosInstance.get().then((res) => {
-			const allPosts = res.data;
-			setAppState({ loading: false, posts: allPosts });
+			const allProducts = res.data;
+			setAppState({ loading: false, products: allProducts });
 			console.log(res.data);
 		});
 	}, [setAppState]);
 
 	return (
 		<div className="App">
-			<h1>Latest Posts</h1>
-			<PostLoading isLoading={appState.loading} posts={appState.posts} />
+			<h1>Latest Products</h1>
+			<ProductLoading isLoading={appState.loading} products={appState.products} />
 		</div>
 	);
 }

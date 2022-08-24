@@ -7,10 +7,21 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+
 
 const useStyles = makeStyles((theme) => ({
+	// card: {
+	// 	margin: 'auto',
+	// 	display: 'block',
+	// 	maxWidth: '100%',
+	// 	maxHeight: '100%',
+	// 	},
+
 	cardMedia: {
-		paddingTop: '56.25%', // 16:9
+		paddingTop: '56.25%', // 16:9	
+		height: '170px',	
 	},
 	link: {
 		margin: theme.spacing(1, 1.5),
@@ -21,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
 				? theme.palette.grey[200]
 				: theme.palette.grey[700],
 	},
-	postTitle: {
+	productTitle: {
 		fontSize: '16px',
-		textAlign: 'left',
+		textAlign: 'left!important',
 	},
-	postText: {
+	productText: {
 		display: 'flex',
 		justifyContent: 'left',
 		alignItems: 'baseline',
@@ -35,47 +46,62 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Posts = (props) => {
-	const { posts } = props;
+const Products = (props) => {
+	const { products } = props;
 	const classes = useStyles();
-	if (!posts || posts.length === 0) return <p>Can not find any posts, sorry</p>;
+
+	const theme = createTheme();
+
+	theme.typography.h1 = {
+		fontSize: '1.125rem',
+		fontWeight: '300',
+		'@media (min-width:600px)': {
+		  fontSize: '1.125rem',
+		},
+		[theme.breakpoints.up('md')]: {
+		  fontSize: '1.5rem',
+		},
+	  };
+
+	if (!products || products.length === 0) return <p>Can not find any products, sorry</p>;
 	return (
 		<React.Fragment>
 			<Container maxWidth="lg" component="main">
 				<Grid container spacing={3}>
-					{posts.map((post) => {
+					{products.map((product) => {
 						return (
-							// Enterprise card is full width at sm breakpoint
-							<Grid item key={post.id} xs={12} sm={6} md={4} >
-								<Card className={classes.card}>
-									<Link
-										color="textPrimary"
-										href={'post/' + post.slug}
-										className={classes.link}
-									>
-										<CardMedia
-											className={classes.cardMedia}
-											image={post.image}
-											title="Image title"
-										/>
-									</Link>
-									<CardContent className={classes.cardContent}>
-										<Typography
-											gutterBottom
-											variant="h6"
-											component="h2"
-											className={classes.postTitle}
+								<Grid item key={product.id} xs={12} sm={6} md={4} >
+									<Card className={classes.card}>
+										<Link
+											color="textPrimary"
+											href={'product/' + product.slug}
+											className={classes.link}
 										>
-											{post.title.substr(0, 50)}...
-										</Typography>
-										<div className={classes.postText}>
-											<Typography color="textSecondary">
-												{post.excerpt.substr(0, 40)}...
-											</Typography>
-										</div>
-									</CardContent>
-								</Card>
-							</Grid>
+											<CardMedia
+												className={classes.cardMedia}
+												image={product.image}
+												title="Image title"
+											/>
+										</Link>
+										<CardContent className={classes.cardContent}>
+											<ThemeProvider theme={theme}>
+												<Typography 
+													variant="h1"
+													textalign="left"
+												>
+													<Box textAlign="left" m={1}>
+														{product.title.substr(0, 40)}...
+													</Box>
+												</Typography>
+											</ThemeProvider>
+											<div className={classes.productText}>
+												<Typography color="textSecondary">
+													{/* {product.excerpt.substr(0, 40)}... */}
+												</Typography>
+											</div>
+										</CardContent>
+									</Card>
+								</Grid>
 						);
 					})}
 				</Grid>
@@ -83,7 +109,7 @@ const Posts = (props) => {
 		</React.Fragment>
 	);
 };
-export default Posts;
+export default Products;
 
 
 // import React from 'react';
