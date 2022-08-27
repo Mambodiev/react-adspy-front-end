@@ -28,9 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
 function Copyright() {
 	return (
-		<Typography variant="body2" color="textSecondary" align="center">
+		<Typography variant="body2" align="center">
 			{'Copyright © '}
-			<Link color="inherit" href="https://material-ui.com/">
+			<Link href="https://material-ui.com/"
+			color="textPrimary"
+			>
 				Your Website
 			</Link>{' '}
 			{new Date().getFullYear()}
@@ -76,13 +78,15 @@ function Footer() {
 				<Grid container spacing={4} justifyContent="space-evenly">
 					{footers.map((footer) => (
 						<Grid item xs={6} sm={3} key={footer.title}>
-							<Typography variant="h6" color="textPrimary" gutterBottom>
+							<Typography variant="h6" gutterBottom>
 								{footer.title}
 							</Typography>
 							<ul>
 								{footer.description.map((item) => (
 									<li key={item}>
-										<Link href="#" variant="subtitle1" color="textSecondary">
+										<Link href="#" variant="subtitle1" 
+										color="textPrimary"
+										>
 											{item}
 										</Link>
 									</li>

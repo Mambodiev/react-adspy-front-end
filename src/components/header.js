@@ -11,6 +11,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MailIcon from '@material-ui/icons/Mail';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Container from '@material-ui/core/Container';
@@ -33,9 +34,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   AppBar : {
-    background: '#fff',
-    color: 'black',
-    shadows: ["none"]
+    background: '#303030',
+    shadows: ["none"],
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -49,9 +49,9 @@ const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#303030',
     '&:hover': {
-      backgroundColor: '#e0e0e0',
+      backgroundColor: '#000c00',
     },
     marginLeft: 0,
     width: '100%',
@@ -70,10 +70,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   inputRoot: {
-    color: 'inherit',
+    // color: 'inherit',
   },
   inputInput: {
-    padding: '5px 8px 5px 0px',
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
@@ -84,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
         width: '20ch',
       },
     },
+    border: '1px solid',
   },
   loginHeader : {
     borderRadius : '0',
@@ -92,6 +92,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
+      padding:'0 25px 0 25px'
     },
   },
   sectionMobile: {
@@ -109,7 +110,10 @@ const useStyles = makeStyles((theme) => ({
   MuiToolbarGutters: {
     paddingLeft: '0',
     paddingRight: '0',
-  }
+  },
+  colorPrimary: {
+    color: "#303030"
+  },
 }));
 
 export default function PrimarySearchAppBar() {
@@ -199,7 +203,7 @@ export default function PrimarySearchAppBar() {
       >
         <MenuItem>
           <IconButton
-            color="inherit">
+            >
             <AccountCircleOutlinedIcon />
           </IconButton>
           <p>Profile</p>
@@ -213,7 +217,7 @@ export default function PrimarySearchAppBar() {
       >
         <MenuItem>
           <IconButton
-            color="inherit">
+            >
             <ExitToAppIcon />
           </IconButton>
           <p>Logout</p>
@@ -227,7 +231,7 @@ export default function PrimarySearchAppBar() {
       >
         <MenuItem>
           <IconButton
-            color="inherit">
+            >
             <AccountCircleOutlinedIcon />
           </IconButton>
           <p>Login</p>
@@ -241,7 +245,7 @@ export default function PrimarySearchAppBar() {
       >
         <MenuItem>
           <IconButton
-            color="inherit">
+            >
             <AccountCircleOutlinedIcon />
           </IconButton>
           <p>Sign Up</p>
@@ -272,7 +276,6 @@ export default function PrimarySearchAppBar() {
             aria-label="account of current user"
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
-            color="inherit"
           >
             <AccountCircleOutlinedIcon />
           </IconButton>
@@ -290,7 +293,6 @@ export default function PrimarySearchAppBar() {
             aria-label="account of current user"
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
-            color="inherit"
           >
             <ExitToAppIcon />
           </IconButton>
@@ -308,7 +310,6 @@ export default function PrimarySearchAppBar() {
             aria-label="account of current user"
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
-            color="inherit"
           >
             <AccountCircleOutlinedIcon />
           </IconButton>
@@ -326,7 +327,6 @@ export default function PrimarySearchAppBar() {
             aria-label="account of current user"
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
-            color="inherit"
           >
             <LockOpenIcon />
           </IconButton>
@@ -347,19 +347,9 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="fixed" className={classes.AppBar}  elevation={0}>
+      <AppBar position="fixed" className={classes.AppBar}  elevation={0}  pb={3}>
         <Container maxWidth="lg"  px={0}>
           <Toolbar className={classes.MuiToolbarGutters}>
-            {/* {['left'].map((anchor) => (
-              <React.Fragment key={anchor}>
-                <Button onClick={toggleDrawer(anchor, true)}>
-                  <MenuIcon fontSize="large" />
-                </Button>
-                <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-                  {list(anchor)}
-                </Drawer>
-              </React.Fragment>
-            ))} */}
             <Typography className={classes.title} variant="h6" noWrap>
               <Link
                   component={NavLink}
@@ -387,36 +377,17 @@ export default function PrimarySearchAppBar() {
               />
             </div>
             <div className={classes.sectionDesktop}>
-
-              {/* <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                <TranslateIcon /> 
-                ENGLISH 
-                <ExpandMoreIcon fontSize="small" />
-              </Button>
-              <Menu
-                id="simple-menu"
-                anchorEl={LanguageMoreanchorEl}
-                keepMounted
-                open={Boolean(LanguageMoreanchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>ENGLISH</MenuItem>
-                <MenuItem onClick={handleClose}>FRANCAIS</MenuItem>
-              </Menu> */}
               <IconButton
                 edge="end"
                 aria-label="account of current user"
                 aria-controls={menuId}
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
-                color="inherit"
+  
                 className={classes.loginHeader}
               >
-                {/* <AccountCircleOutlinedIcon />
-                <ExpandMoreIcon fontSize="small" /> */}
-                <Typography  variant="h5">
-                  LOGIN
-                </Typography>
+                <AccountCircleOutlinedIcon />
+                <ExpandMoreIcon fontSize="small" />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>
@@ -425,7 +396,7 @@ export default function PrimarySearchAppBar() {
                 aria-controls={mobileMenuId}
                 aria-haspopup="true"
                 onClick={handleMobileMenuOpen}
-                color="inherit"
+  
               >
                 <MoreIcon />
               </IconButton>

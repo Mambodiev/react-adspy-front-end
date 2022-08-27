@@ -9,32 +9,37 @@ import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-
+import Paper from '@material-ui/core/Paper';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ShareIcon from '@material-ui/icons/Share';
 
 const useStyles = makeStyles((theme) => ({
-	// card: {
-	// 	margin: 'auto',
-	// 	display: 'block',
-	// 	maxWidth: '100%',
-	// 	maxHeight: '100%',
-	// 	},
+	cardContainer: {
+		paddingTop: theme.spacing(10),
+	},
+	cardContent: {
+		padding:0,
+	},
+	card: {
+		backgroundColor: '#303030',
+		color: '#fff',
+	},
 
 	cardMedia: {
-		paddingTop: '56.25%', // 16:9	
-		height: '170px',	
+		paddingTop: '100%', 
+		height: '100%',	
 	},
 	link: {
 		margin: theme.spacing(1, 1.5),
 	},
-	cardHeader: {
-		backgroundColor:
-			theme.palette.type === 'light'
-				? theme.palette.grey[200]
-				: theme.palette.grey[700],
-	},
 	productTitle: {
 		fontSize: '16px',
 		textAlign: 'left!important',
+	},
+	adsLogo: {
+		width:'40px',
+		maxWidth:'40px',
+		height:'40px',
 	},
 	productText: {
 		display: 'flex',
@@ -44,36 +49,67 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: 'left',
 		marginBottom: theme.spacing(2),
 	},
+	root: {
+		flexGrow: 1,
+	  },
+	paper: {
+		backgroundColor: '#303030',
+		color: '#fff',
+		padding: theme.spacing(1),
+	},
+	paper: {
+		backgroundColor: '#303030',
+		color: '#fff',
+		padding: '8px 8px 8px 0px',
+	},
+	paper: {
+		backgroundColor: '#303030',
+		color: '#fff',
+		padding: '8px 8px 8px 8px',
+	},
 }));
 
 const Products = (props) => {
 	const { products } = props;
 	const classes = useStyles();
 
-	const theme = createTheme();
+	const theme = createTheme({
+		typography: {
+			subtitle1: {
+				fontSize: 18,
+			},
+			body1: {
+				fontWeight: '700',
+			},
+		},
+	});
 
 	theme.typography.h1 = {
 		fontSize: '1.125rem',
-		fontWeight: '300',
+		fontWeight: '500',
 		'@media (min-width:600px)': {
-		  fontSize: '1.125rem',
+			fontSize: '1.125rem',
 		},
 		[theme.breakpoints.up('md')]: {
-		  fontSize: '1.5rem',
+			fontSize: '1.5rem',
 		},
-	  };
+	};
+	
 
 	if (!products || products.length === 0) return <p>Can not find any products, sorry</p>;
 	return (
+		
 		<React.Fragment>
 			<Container maxWidth="lg" component="main">
-				<Grid container spacing={3}>
+				<Typography variant="h5" gutterBottom className={classes.cardContainer}>
+					Only Real Products
+				</Typography>
+				<Grid container spacing={3} >
 					{products.map((product) => {
 						return (
 								<Grid item key={product.id} xs={12} sm={6} md={4} >
-									<Card className={classes.card}>
+									<Card className={classes.card} elevation={0}>
 										<Link
-											color="textPrimary"
 											href={'product/' + product.slug}
 											className={classes.link}
 										>
@@ -85,19 +121,69 @@ const Products = (props) => {
 										</Link>
 										<CardContent className={classes.cardContent}>
 											<ThemeProvider theme={theme}>
-												<Typography 
-													variant="h1"
-													textalign="left"
-												>
-													<Box textAlign="left" m={1}>
-														{product.title.substr(0, 40)}...
-													</Box>
-												</Typography>
+												    <div className={classes.root}>
+														<Grid container spacing={0}>
+															<Grid item sm={1}>
+																<Paper className={classes.paper}> 
+																	<CardMedia
+																		className={classes.adsLogo}
+																		image={product.image}
+																		title="Image title"
+																	/>
+																</Paper>
+															</Grid>
+															<Grid item sm={1}>
+																<Paper className={classes.paper}>
+																<CardMedia
+																	className={classes.adsLogo}
+																	image={product.image}
+																	title="Image title"
+																/>
+																</Paper>
+															</Grid>
+															<Grid item sm={10}>
+																<Paper className={classes.paper}>
+																	<Typography 
+																	variant="h1"
+																	>
+																		<Box textAlign="left">
+																			{product.title.substr(0, 18)}...
+																		</Box>
+																	</Typography>
+																</Paper>
+															</Grid>
+														</Grid>
+													</div>
 											</ThemeProvider>
-											<div className={classes.productText}>
-												<Typography color="textSecondary">
-													{/* {product.excerpt.substr(0, 40)}... */}
-												</Typography>
+											<div className={classes.productText}>											
+												<div className={classes.root}>
+													<Grid container spacing={1}>
+														<Grid item xs={4}>
+															<Paper className={classes.paper} elevation={0}>
+																<ThemeProvider theme={theme}>
+																	<ThumbUpAltIcon />
+																	<Typography>99</Typography>
+																</ThemeProvider>
+															</Paper>
+														</Grid>
+														<Grid item xs={4}>
+														<Paper className={classes.paper} elevation={0}>
+															<ThemeProvider theme={theme}>
+																<ShareIcon />
+																<Typography>59</Typography>
+															</ThemeProvider>
+														</Paper>
+														</Grid>
+														<Grid item xs={4}>
+														<Paper className={classes.paper} elevation={0}>
+															<ThemeProvider theme={theme}>
+																<Typography variant="subtitle1">Countries</Typography>
+																<Typography>USA</Typography>
+															</ThemeProvider>
+														</Paper>
+														</Grid>
+													</Grid>
+												</div>
 											</div>
 										</CardContent>
 									</Card>
@@ -110,43 +196,3 @@ const Products = (props) => {
 	);
 };
 export default Products;
-
-
-// import React from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
-// import Grid from '@material-ui/core/Grid';
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   paper: {
-//     padding: theme.spacing(2),
-//     textAlign: 'center',
-//     color: theme.palette.text.secondary,
-//   },
-// }));
-
-// export default function CenteredGrid() {
-//   const classes = useStyles();
-
-//   return (
-//     <div className={classes.root}>
-//       <Grid container spacing={3}>
-//         <Grid item xs={12} sm={6} md={4} lg={3}>
-//           <Paper className={classes.paper}>xs=3</Paper>
-//         </Grid>
-//         <Grid item xs={12} sm={6} md={4} lg={3}>
-//           <Paper className={classes.paper}>xs=3</Paper>
-//         </Grid>
-//         <Grid item xs={12} sm={6} md={4} lg={3}>
-//           <Paper className={classes.paper}>xs=3</Paper>
-//         </Grid>
-//         <Grid item xs={12} sm={6} md={4} lg={3}>
-//           <Paper className={classes.paper}>xs=3</Paper>
-//         </Grid>
-//       </Grid>
-//     </div>
-//   );
-// }

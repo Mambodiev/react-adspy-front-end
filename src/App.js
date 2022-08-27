@@ -6,7 +6,6 @@ import axiosInstance from './axios';
 import { createTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
-
 function App() {
 	const ProductLoading = ProductLoadingComponent(Products);
 	const [appState, setAppState] = useState({
@@ -20,8 +19,10 @@ function App() {
 			'Open Sans',
 			'sans-serif'
 		  ].join(','),
-		}
+		},
+
 	  });
+
 	useEffect(() => {
 		axiosInstance.get().then((res) => {
 			const allProducts = res.data;
@@ -33,7 +34,7 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<div className="App">
-				<h1>Latest Products</h1>
+				
 				<ProductLoading isLoading={appState.loading} products={appState.products} />
 			</div>
 		</ThemeProvider>
