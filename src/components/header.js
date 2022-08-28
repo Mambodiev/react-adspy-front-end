@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
         width: '20ch',
       },
     },
-    border: '1px solid',
+    // border: '1px solid',
   },
   loginHeader : {
     borderRadius : '0',

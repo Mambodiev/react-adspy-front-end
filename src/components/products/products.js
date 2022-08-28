@@ -37,9 +37,8 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: 'left!important',
 	},
 	adsLogo: {
-		width:'40px',
-		maxWidth:'40px',
-		height:'40px',
+		padding: '16px', 
+		height: '100%',
 	},
 	productText: {
 		display: 'flex',
@@ -55,18 +54,18 @@ const useStyles = makeStyles((theme) => ({
 	paper: {
 		backgroundColor: '#303030',
 		color: '#fff',
-		padding: theme.spacing(1),
+		paddingRight: theme.spacing(1),
 	},
-	paper: {
-		backgroundColor: '#303030',
-		color: '#fff',
-		padding: '8px 8px 8px 0px',
-	},
-	paper: {
-		backgroundColor: '#303030',
-		color: '#fff',
-		padding: '8px 8px 8px 8px',
-	},
+	// paper: {
+	// 	backgroundColor: '#303030',
+	// 	color: '#fff',
+	// 	padding: '8px 8px 8px 0px',
+	// },
+	// paper: {
+	// 	backgroundColor: '#303030',
+	// 	color: '#fff',
+	// 	padding: '8px 8px 8px 8px',
+	// },
 }));
 
 const Products = (props) => {
@@ -122,7 +121,7 @@ const Products = (props) => {
 										<CardContent className={classes.cardContent}>
 											<ThemeProvider theme={theme}>
 												    <div className={classes.root}>
-														<Grid container spacing={0}>
+														<Grid container spacing={3}>
 															<Grid item sm={1}>
 																<Paper className={classes.paper}> 
 																	<CardMedia
@@ -132,7 +131,7 @@ const Products = (props) => {
 																	/>
 																</Paper>
 															</Grid>
-															<Grid item sm={1}>
+															<Grid item sm={1} >
 																<Paper className={classes.paper}>
 																<CardMedia
 																	className={classes.adsLogo}
@@ -147,7 +146,7 @@ const Products = (props) => {
 																	variant="h1"
 																	>
 																		<Box textAlign="left">
-																			{product.title.substr(0, 18)}...
+																			{product.title.substr(0, 19)}...
 																		</Box>
 																	</Typography>
 																</Paper>
