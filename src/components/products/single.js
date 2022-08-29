@@ -10,6 +10,9 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Box from '@material-ui/core/Box';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import Divider from '@material-ui/core/Divider';
+import Link from '@material-ui/core/Link';
+import TopCustomerCountriesData from './TopCustomerCountriesData/TopCustomerCountriesData';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -21,6 +24,34 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: 'center',
 		backgroundColor: '#303030',
 	  },
+	  Chip: {
+		margin: theme.spacing(0.5),
+		
+	  },
+	  
+	  section2: {
+		marginTop: theme.spacing(2),
+	  },
+
+	  price: {
+		backgroundColor: '#262626',
+		color: '#fff',
+		fontSize: '2rem',
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1.225rem',
+		  },
+	  },
+	  adsLogo: {
+		paddingTop: '4px', 
+		height: '100%',
+		width: '100%'
+	},
+	divider: {
+		margin: '12px 0 12px 0'
+	},
+	rootx: {
+		marginLeft:'12px',
+	}
 }));
 
 export default function Product() {
@@ -46,7 +77,7 @@ export default function Product() {
 				fontSize: 18,
 				textAlign: "center",
 				color: '#fff',
-				backgroundColor: '#303030'
+				backgroundColor: '#262626'
 			},
 			body1: {
 				fontWeight: '700',
@@ -56,8 +87,7 @@ export default function Product() {
 	});
 
 	theme.typography.h1 = {
-		fontSize: '1.125rem',
-		backgroundColor:'#303030',
+		fontSize: '1.225rem',
 		color: '#fff',
 		fontWeight: '500',
 		'@media (min-width:600px)': {
@@ -96,35 +126,83 @@ export default function Product() {
 									<Typography 
 										variant="h1"
 									>
-										<Box textAlign="left" m={1}>
+										<Box textAlign="left" mb={2}>
 											{data.products.title}{' '}
 										</Box>
 									</Typography>
 									<Grid container spacing={1}>
 										<Grid item xs>
-										<Paper className={classes.paper}  elevation={0}>
-											<Typography variant="subtitle1">Price</Typography>
-											<Typography variant="h1">$59.13</Typography>
-										</Paper>
+											<Paper className={classes.paper}  >
+												<Typography variant="subtitle1">Price</Typography>
+												<Typography className={classes.price}>$59.13</Typography>
+											</Paper>
 										</Grid>
 										<Grid item xs>
-										<Paper className={classes.paper}  elevation={0}>
-											<Typography variant="subtitle1">Cost</Typography>
-											<Typography variant="h1">$59.13</Typography>
-										</Paper>
+											<Paper className={classes.paper}  elevation={3}>
+												<Typography variant="subtitle1">Cost</Typography>
+												<Typography className={classes.price}>$59.13</Typography>
+											</Paper>
 										</Grid>
 										<Grid item xs>
-										<Paper className={classes.paper}  elevation={0}>
-											<Typography variant="subtitle1">Profit</Typography>
-											<Typography variant="h1">$59.13</Typography>
-										</Paper>
+											<Paper className={classes.paper}  elevation={3}>
+												<Typography variant="subtitle1">Profit</Typography>
+												<Typography className={classes.price}>$59.13</Typography>
+											</Paper>
 										</Grid>
 									</Grid>
 								</ThemeProvider>
 							</Paper>
+							<div className={classes.section2}>
+								<Typography variant="h4">
+								Stores and Ads Found
+								</Typography>	
+								<div className={classes.rootx} py={3}>
+									<Grid container spacing={1}>
+										<Grid item sm={1}>
+											<Paper className={classes.paper}> 												
+													<CardMedia
+														className={classes.adsLogo}
+														image={data.products.image}
+														title="Image title"
+														component="img"
+														height="100%"
+													/>
+											</Paper>
+										</Grid>										
+										<Grid item sm={11} >
+											<Link target="_blank"  href="https://globaltechgoodiesandmore.com/products/petravel-waterproof-dog-car-seat-cover-pet-rear-back-seat-protector" className={classes.Chip} variant="h6"  color="inherit">
+												{'globaltechgoodiesandmore.com'.substr(0, 19)}...
+											</Link>	
+										</Grid>
+									</Grid>	
+								</div>	
+								<div className={classes.rootx} py={3}>
+									<Grid container spacing={1}>
+										<Grid item sm={1}>
+											<Paper className={classes.paper}> 												
+													<CardMedia
+														className={classes.adsLogo}
+														image={data.products.image}
+														title="Image title"
+														component="img"
+														height="100%"
+													/>
+											</Paper>
+										</Grid>										
+										<Grid item sm={11}>
+											<Link target="_blank"  href="https://globaltechgoodiesandmore.com/products/petravel-waterproof-dog-car-seat-cover-pet-rear-back-seat-protector" className={classes.Chip} variant="h6"  color="inherit">
+												{'globaltechgoodiesandmore.com'.substr(0, 19)}...
+											</Link>	
+										</Grid>
+									</Grid>	
+								</div>					
+							</div>
+							<Divider variant="middle" className={classes.divider}/>
+							<TopCustomerCountriesData />
 						</Grid>
 					</Grid>
 				</div>
+				
 		</Container>
 	);
 }

@@ -1,0 +1,10 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+ 
+.apexcharts-legend-text {
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 500px !important;
+}

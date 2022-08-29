@@ -12,6 +12,7 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ShareIcon from '@material-ui/icons/Share';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 const useStyles = makeStyles((theme) => ({
 	cardContainer: {
@@ -47,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: '12px',
 		textAlign: 'left',
 		marginBottom: theme.spacing(2),
+		marginTop: theme.spacing(1),
 	},
 	root: {
 		flexGrow: 1,
@@ -56,16 +58,6 @@ const useStyles = makeStyles((theme) => ({
 		color: '#fff',
 		paddingRight: theme.spacing(1),
 	},
-	// paper: {
-	// 	backgroundColor: '#303030',
-	// 	color: '#fff',
-	// 	padding: '8px 8px 8px 0px',
-	// },
-	// paper: {
-	// 	backgroundColor: '#303030',
-	// 	color: '#fff',
-	// 	padding: '8px 8px 8px 8px',
-	// },
 }));
 
 const Products = (props) => {
@@ -176,7 +168,7 @@ const Products = (props) => {
 														<Grid item xs={4}>
 														<Paper className={classes.paper} elevation={0}>
 															<ThemeProvider theme={theme}>
-																<Typography variant="subtitle1">Countries</Typography>
+																<LocationOnIcon />
 																<Typography>USA</Typography>
 															</ThemeProvider>
 														</Paper>

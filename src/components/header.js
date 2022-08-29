@@ -10,7 +10,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MailIcon from '@material-ui/icons/Mail';
 import MoreIcon from '@material-ui/icons/MoreVert';
@@ -28,6 +27,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { NavLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -204,7 +204,7 @@ export default function PrimarySearchAppBar() {
         <MenuItem>
           <IconButton
             >
-            <AccountCircleOutlinedIcon />
+            <AccountCircleIcon />
           </IconButton>
           <p>Profile</p>
         </MenuItem>        
@@ -232,7 +232,7 @@ export default function PrimarySearchAppBar() {
         <MenuItem>
           <IconButton
             >
-            <AccountCircleOutlinedIcon />
+            <AccountCircleIcon />
           </IconButton>
           <p>Login</p>
         </MenuItem>
@@ -246,7 +246,7 @@ export default function PrimarySearchAppBar() {
         <MenuItem>
           <IconButton
             >
-            <AccountCircleOutlinedIcon />
+            <AccountCircleIcon />
           </IconButton>
           <p>Sign Up</p>
         </MenuItem>
@@ -277,7 +277,7 @@ export default function PrimarySearchAppBar() {
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
           >
-            <AccountCircleOutlinedIcon />
+            <AccountCircleIcon />
           </IconButton>
           <p>Profile</p>
         </MenuItem>
@@ -311,7 +311,7 @@ export default function PrimarySearchAppBar() {
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
           >
-            <AccountCircleOutlinedIcon />
+            <AccountCircleIcon />
           </IconButton>
           <p>Login</p>
         </MenuItem>     
@@ -386,7 +386,7 @@ export default function PrimarySearchAppBar() {
   
                 className={classes.loginHeader}
               >
-                <AccountCircleOutlinedIcon />
+                <AccountCircleIcon />
                 <ExpandMoreIcon fontSize="small" />
               </IconButton>
             </div>
