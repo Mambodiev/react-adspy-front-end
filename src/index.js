@@ -15,43 +15,27 @@ import Admin from './Admin';
 import Create from './components/admin/create';
 import Edit from './components/admin/edit';
 import Delete from './components/admin/delete';
-import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-const theme = createTheme({
-	root: {
-		flexGrow: 1,
-		paddingTop: '100px',
-	  },
-	palette: {
-	  type: "dark",
-	  backgroundColor: "#303030",
-	  text: {
-		primary: "#fff"
-	  }
-	  
-	}
-  });
+
 
 const routing = (
 	<Router>
-		<ThemeProvider theme={theme}>
-			<CssBaseline />
-			<Header />
-			<Switch>
-				<Route exact path="/" component={App} />
-				<Route exact path="/admin" component={Admin} />
-				<Route exact path="/admin/create" component={Create} />
-				<Route exact path="/admin/edit/:id" component={Edit} />
-				<Route exact path="/admin/delete/:id" component={Delete} />
-				<Route path="/register" component={Register} />
-				<Route path="/login" component={Login} />
-				<Route path="/logout" component={Logout} />
-				<Route path="/product/:slug" component={Single} />
-				<Route path="/search" component={Search} />
-			</Switch>
-			<Footer />
-		</ThemeProvider>,
+		<CssBaseline />
+		<Header />
+		<Switch>
+			<Route exact path="/" component={App} />
+			<Route exact path="/admin" component={Admin} />
+			<Route exact path="/admin/create" component={Create} />
+			<Route exact path="/admin/edit/:id" component={Edit} />
+			<Route exact path="/admin/delete/:id" component={Delete} />
+			<Route path="/register" component={Register} />
+			<Route path="/login" component={Login} />
+			<Route path="/logout" component={Logout} />
+			<Route path="/product/:slug" component={Single} />
+			<Route path="/search" component={Search} />
+		</Switch>
+		<Footer />
 	</Router>
 
 );

@@ -3,25 +3,25 @@ import './App.css';
 import Products from './components/products/products';
 import ProductLoadingComponent from './components/products/productLoading';
 import axiosInstance from './axios';
-import { createTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+
+	App : {
+	  background: '#fff',
+	  shadows: ["none"],
+	  color:"inherit"
+	},
+  }));
 
 function App() {
+	const classes = useStyles();
 	const ProductLoading = ProductLoadingComponent(Products);
 	const [appState, setAppState] = useState({
 		loading: true,
 		products: null,
 	});
-	const theme = createTheme({
-		typography: {
-		  fontFamily: [
-			'Lato',
-			'Open Sans',
-			'sans-serif'
-		  ].join(','),
-		},
-
-	  });
 
 	useEffect(() => {
 		axiosInstance.get().then((res) => {
@@ -32,12 +32,10 @@ function App() {
 		});
 	}, [setAppState]);
 	return (
-		<ThemeProvider theme={theme}>
-			<div className="App">
-				
-				<ProductLoading isLoading={appState.loading} products={appState.products} />
-			</div>
-		</ThemeProvider>
+		<div className={classes.App}>
+			
+			<ProductLoading isLoading={appState.loading} products={appState.products} />
+		</div>
 	);
 }
 export default App;

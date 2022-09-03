@@ -21,17 +21,13 @@ const useStyles = makeStyles((theme) => ({
 	cardContent: {
 		padding:0,
 	},
-	card: {
-		backgroundColor: '#303030',
-		color: '#fff',
-	},
 
 	cardMedia: {
 		paddingTop: '100%', 
 		height: '100%',	
 	},
 	link: {
-		margin: theme.spacing(1, 1.5),
+		margin: theme.spacing(1, 1.5),	
 	},
 	productTitle: {
 		fontSize: '16px',
@@ -52,10 +48,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 	root: {
 		flexGrow: 1,
+		marginTop: '10px',
 	  },
 	paper: {
-		backgroundColor: '#303030',
-		color: '#fff',
 		paddingRight: theme.spacing(1),
 	},
 }));
@@ -93,58 +88,64 @@ const Products = (props) => {
 		<React.Fragment>
 			<Container maxWidth="lg" component="main">
 				<Typography variant="h5" gutterBottom className={classes.cardContainer}>
-					Only Real Products
+					Wining Products
 				</Typography>
 				<Grid container spacing={3} >
 					{products.map((product) => {
 						return (
-								<Grid item key={product.id} xs={12} sm={6} md={4} >
+								<Grid item key={product.id} xs={12} sm={6} md={4}>
+									<Link
+										href={'product/' + product.slug}
+										className={classes.link}
+										color="inherit"
+										style={{ textDecoration: 'none' }}
+									>
 									<Card className={classes.card} elevation={0}>
-										<Link
-											href={'product/' + product.slug}
-											className={classes.link}
-										>
-											<CardMedia
-												className={classes.cardMedia}
-												image={product.image}
-												title="Image title"
-											/>
-										</Link>
+										<CardMedia
+											className={classes.cardMedia}
+											image={product.image}
+											title="Image title"
+										/>
+										{/* <CardMedia
+											component='iframe'
+											className={classes.media}
+											src="https://drive.google.com/file/d/1836OF2FoZzSazMGggB3FRarS6OIgzLlp/preview" width="640" height="480" 
+											title="vimeo-player" 
+											src="https://player.vimeo.com/video/696249895?h=ec00a2d70c" width="640" height="360" frameBorder="0" allowFullScreen
+										/> */}
 										<CardContent className={classes.cardContent}>
 											<ThemeProvider theme={theme}>
-												    <div className={classes.root}>
-														<Grid container spacing={3}>
-															<Grid item sm={1}>
-																<Paper className={classes.paper}> 
-																	<CardMedia
-																		className={classes.adsLogo}
-																		image={product.image}
-																		title="Image title"
-																	/>
-																</Paper>
-															</Grid>
-															<Grid item sm={1} >
-																<Paper className={classes.paper}>
+												<div className={classes.root}>
+													<Grid container spacing={3}>
+														<Grid item sm={1}>
+															<Paper className={classes.paper}> 
 																<CardMedia
 																	className={classes.adsLogo}
 																	image={product.image}
 																	title="Image title"
 																/>
-																</Paper>
-															</Grid>
-															<Grid item sm={10}>
-																<Paper className={classes.paper}>
-																	<Typography 
-																	variant="h1"
-																	>
-																		<Box textAlign="left">
-																			{product.title.substr(0, 19)}...
-																		</Box>
-																	</Typography>
-																</Paper>
-															</Grid>
+															</Paper>
 														</Grid>
-													</div>
+														<Grid item sm={1} >
+															<Paper className={classes.paper}>
+															<CardMedia
+																className={classes.adsLogo}
+																image={product.image}
+																title="Image title"
+															/>
+															</Paper>
+														</Grid>
+														<Grid item sm={10}>
+															<Typography 
+															variant="h1"
+															>
+																<Box textAlign="left">
+																	{product.title.substring(0, 18)}
+																</Box>
+															</Typography>
+														</Grid>
+													</Grid>
+												</div>
 											</ThemeProvider>
 											<div className={classes.productText}>											
 												<div className={classes.root}>
@@ -178,6 +179,7 @@ const Products = (props) => {
 											</div>
 										</CardContent>
 									</Card>
+									</Link>
 								</Grid>
 						);
 					})}
